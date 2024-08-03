@@ -1,0 +1,41 @@
+<div class="jumbotron" *ngIf="!identity">
+    <h1 class="display-4">Bienvenido a video app</h1>
+    <p class="lead">Aqui podras guardar tus videos favoritos de youtube</p>
+    <hr class="my-4">
+    <p>Registrate para empezar a disfrutar de nuestros servicios</p>
+    <p class="lead">
+      <a class="btn btn-success btn-lg" [routerLink]="['/register']" role="button">Registrate</a>
+    </p>
+</div>
+
+<div *ngIf="identity">
+    <h1>Mis videos</h1>
+    
+    <div class="video-galery">
+      <div class="card"*ngFor="let video of videos">
+        <div class="card-header">
+          {{video.title}}
+        </div>
+
+        <div class="card-body ">
+          <img src="{{ getThumb(video.url) }}" alt="" class="w-100">
+          <div class="my-2">
+            <a class="btn btn-success mr-2" [routerLink]="['/video/detail/'+video.id]">Ver</a>
+            <a class="btn btn-warning mr-2" [routerLink]="['/video/edit/'+video.id]">Editar</a>
+            <a class="btn btn-danger mr-2" (click)="deleteVideo(video.id)">Borrar</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <nav aria-label="Page navigation example " class="my-4 d-block pages" *ngIf="videos">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link"  [routerLink]="['/home/'+previous]">Previous</a></li>
+
+        <li class="page-item" *ngFor="let page of array_pages"><a class="page-link" [routerLink]="['/home/'+page]" >{{page}}</a></li>
+        
+        <li class="page-item"><a class="page-link"  [routerLink]="['/home/'+next]">Next</a></li>
+      </ul>
+    </nav>
+</div>

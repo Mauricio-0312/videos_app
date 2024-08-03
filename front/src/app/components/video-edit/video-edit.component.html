@@ -1,0 +1,39 @@
+<h2>Editar</h2>
+<p *ngIf="status == 'success'" class="alert alert-success">Video editado exitosamente </p>
+<p *ngIf="status == 'error'" class="alert alert-danger">Error al editar el video</p>
+
+<form action="#" #videoEditForm="ngForm" (ngSubmit)="onSubmit(videoEditForm)" class="w-50">
+    <div class="form-group">
+        <label for="title">Titulo:</label>
+        <input type="text" name="title" class="form-control" #title="ngModel" [(ngModel)]="video.title"
+        required>
+
+        <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+            El titulo no es valido
+        </small>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Descripcion:</label>
+        <textarea type="text" name="description" class="form-control" #description="ngModel" [(ngModel)]="video.description" 
+        required></textarea>
+
+        <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+            La descripcion no es valida
+        </small>
+    </div>
+
+    <div class="form-group">
+        <label for="url">Url:</label>
+        <input type="text" name="url" class="form-control" #url="ngModel" [(ngModel)]="video.url" 
+        required>
+
+        <small *ngIf="!url.valid && url.touched" class="invalid-feedback d-block">
+            La url no es valida
+        </small>
+    </div>
+
+
+
+    <input type="submit" class="btn btn-success" value="Enviar" [disabled]="videoEditForm.invalid">
+</form>

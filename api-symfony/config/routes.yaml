@@ -1,0 +1,47 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index:
+    path: /user
+    controller: App\Controller\UserController::index
+    
+create_user:
+    path: /create/user
+    controller: App\Controller\UserController::create
+    methods: [POST]
+
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+    methods: [POST]
+
+update:
+    path: /update
+    controller: App\Controller\UserController::update
+    methods: [PUT]
+    
+create_video:
+    path: /video/create
+    controller: App\Controller\VideoController::create
+    methods: [POST]
+    
+video_detail:
+    path: /video/detail/{id}
+    controller: App\Controller\VideoController::detail
+    methods: [GET]
+    
+videos:
+    path: /videos
+    controller: App\Controller\VideoController::videos
+    methods: [GET]
+    
+remove_video:
+    path: /video/remove/{id}
+    controller: App\Controller\VideoController::remove
+    methods: [DELETE]
+    
+update_video:
+    path: /video/update/{id}
+    controller: App\Controller\VideoController::create
+    methods: [PUT]

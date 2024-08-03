@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.video-galery{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.pagination{
+    display: block;
+    width: max-content;
+    margin: 0px auto;
+}
